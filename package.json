@@ -1,0 +1,22 @@
+{
+  "name": "codetrack",
+  "version": "1.0.0",
+  "description": "CodeTrack - A modern code tracking and leaderboard system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["codetrack", "leaderboard", "tracking", "coding", "competition"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-router": "^0.0.1",
+    "mongoose": "^8.13.1",
+    "router": "^2.2.0"
+  },
+  "type": "module"
+}
