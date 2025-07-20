@@ -5,18 +5,19 @@ const listSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         required: true, 
         unique: true,
-        ref: 'users'
+        ref: 'User'
     }, 
-    usernames: [
-        { 
-            type: String, 
-            required: true 
-        }
-    ]
+    usernames: [{
+        type: String, 
+        required: true,
+        trim: true
+    }]
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'lists'
 });
 
-const List = mongoose.model("list", listSchema);
+// Check if model already exists before creating it
+const List = mongoose.models.List || mongoose.model('List', listSchema);
 
 export default List;
