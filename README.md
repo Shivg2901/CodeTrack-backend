@@ -9,6 +9,7 @@ A modern code tracking and leaderboard system built with Node.js and Express.
 - **Leaderboard System**: Maintain lists of usernames per user
 - **RESTful API**: Clean API endpoints for all operations
 - **MongoDB Integration**: Persistent data storage with Mongoose
+- **Feedback Submission**: Accept user feedback via API
 
 ## API Endpoints
 
@@ -21,6 +22,13 @@ A modern code tracking and leaderboard system built with Node.js and Express.
 - `POST /api/user/add` - Add username to user's list
 - `POST /api/user/remove` - Remove username from user's list
 - `GET /api/user/fetchusernames` - Fetch all usernames for a user
+
+### Feedback
+- `POST /api/feedback/submit` - Submit feedback (name, email, message, etc.)
+
+### Health & Debug
+- `GET /health` - Health check endpoint
+- `GET /debug/db` - Database status and collection counts
 
 ## Setup
 
@@ -40,7 +48,7 @@ A modern code tracking and leaderboard system built with Node.js and Express.
    ```bash
    # On Windows (if MongoDB is installed as a service)
    net start MongoDB
-   
+
    # Or start MongoDB manually
    mongod
    ```
@@ -69,7 +77,6 @@ If you encounter connection issues with local MongoDB:
 
 1. **MongoDB Service**: Ensure MongoDB is running:
    ```bash
-   # Check if MongoDB is running
    mongo --eval "db.adminCommand('ismaster')"
    ```
 
@@ -90,17 +97,19 @@ If you prefer using MongoDB Atlas instead of local MongoDB:
 ```
 CodeTrack/
 ├── controller/
-│   ├── authcontroller.js    # Authentication logic
-│   └── user_controller.js   # User management logic
+│   ├── authcontroller.js      # Authentication logic
+│   ├── user_controller.js     # User management logic
+│   └── feedbackcontroller.js  # Feedback submission logic
 ├── models/
-│   ├── user.js             # User schema
-│   └── list.js             # Username list schema
+│   ├── user.js                # User schema
+│   └── list.js                # Username list schema
 ├── routes/
-│   ├── auth_routes.js      # Authentication routes
-│   └── user_routes.js      # User management routes
-├── server.js               # Main server file
-├── package.json            # Project dependencies
-└── README.md              # Project documentation
+│   ├── auth_routes.js         # Authentication routes
+│   ├── user_routes.js         # User management routes
+│   └── feedback_routes.js     # Feedback routes
+├── server.js                  # Main server file
+├── package.json               # Project dependencies
+└── README.md                  # Project documentation
 ```
 
 ## Technologies Used
