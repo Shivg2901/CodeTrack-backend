@@ -2,6 +2,8 @@
 
 A modern code tracking and leaderboard system built with Node.js and Express.
 
+**🌟 Live API**: [https://codetrack-backend-9val.onrender.com](https://codetrack-backend-9val.onrender.com)
+
 ## Features
 
 - **User Authentication**: Secure registration and login system
@@ -12,6 +14,8 @@ A modern code tracking and leaderboard system built with Node.js and Express.
 - **Feedback Submission**: Accept user feedback via API
 
 ## API Endpoints
+
+**Base URL**: `https://codetrack-backend-9val.onrender.com`
 
 ### Authentication
 - `POST /api/auth/register` - Register a new user
@@ -59,6 +63,14 @@ A modern code tracking and leaderboard system built with Node.js and Express.
    ```bash
    npm run dev
    ```
+
+## Deployment
+
+The backend is deployed on **Render** at: `https://codetrack-backend-9val.onrender.com`
+
+### Environment Variables (Production)
+- `MONGO_URI`: MongoDB Atlas connection string
+- `PORT`: Automatically set by Render
 
 ## Database Configuration
 
