@@ -2,8 +2,6 @@
 
 A modern code tracking and leaderboard system built with Node.js and Express.
 
-**🌟 Live API**: [https://codetrack-backend-9val.onrender.com](https://codetrack-backend-9val.onrender.com)
-
 ## Features
 
 - **User Authentication**: Secure registration and login system
