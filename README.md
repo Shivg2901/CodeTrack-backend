@@ -1,4 +1,4 @@
-# CodeTrack
+# CodeTrack Backend
 
 A modern code tracking and leaderboard system built with Node.js and Express.
 
@@ -34,7 +34,7 @@ A modern code tracking and leaderboard system built with Node.js and Express.
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- MongoDB installed and running locally
+- MongoDB Atlas account (cloud database)
 
 ### Installation
 
@@ -44,22 +44,13 @@ A modern code tracking and leaderboard system built with Node.js and Express.
    npm install
    ```
 
-3. Start MongoDB service:
-   ```bash
-   # On Windows (if MongoDB is installed as a service)
-   net start MongoDB
-
-   # Or start MongoDB manually
-   mongod
+3. Create a `.env` file with the following variables:
    ```
-
-4. Create a `.env` file with the following variables:
-   ```
-   MONGO_URI=mongodb://localhost:27017/codetrack
+   MONGO_URI=mongodb+srv://CodeTrack:qlvonOtyy8pnqK6n@codetrack.jiuaqby.mongodb.net/
    PORT=3000
    ```
 
-5. Start the server:
+4. Start the server:
    ```bash
    npm start
    ```
@@ -69,28 +60,37 @@ A modern code tracking and leaderboard system built with Node.js and Express.
    npm run dev
    ```
 
+## Database Configuration
+
+This project uses **MongoDB Atlas** (cloud database) instead of local MongoDB.
+
+### MongoDB Atlas Setup
+
+The application is pre-configured to connect to a MongoDB Atlas cluster:
+- **Cluster**: CodeTrack
+- **Database**: Will be automatically created
+- **Collections**: `users` and `lists` will be created automatically
+
+### Connection Details
+- The connection string includes authentication credentials
+- No additional setup required - the database is ready to use
+- The application will automatically create collections as needed
+
 ## Troubleshooting
 
 ### MongoDB Connection Issues
 
-If you encounter connection issues with local MongoDB:
+If you encounter connection issues:
 
-1. **MongoDB Service**: Ensure MongoDB is running:
-   ```bash
-   mongo --eval "db.adminCommand('ismaster')"
-   ```
+1. **Internet Connection**: Ensure you have a stable internet connection
+2. **Atlas Status**: Check if MongoDB Atlas service is operational
+3. **IP Whitelist**: The cluster is configured to allow all IPs (0.0.0.0/0)
+4. **Credentials**: The connection string includes embedded credentials
 
-2. **Port**: Verify MongoDB is running on the default port (27017)
-
-3. **Database**: The application will automatically create the `codetrack` database if it doesn't exist
-
-### MongoDB Atlas (Alternative Setup)
-
-If you prefer using MongoDB Atlas instead of local MongoDB:
-
-1. **IP Whitelist**: Add your current IP address to the Atlas cluster's IP Access List
-2. **Database User**: Ensure you have a database user with proper permissions
-3. **Connection String**: Update your `MONGO_URI` in the `.env` file with your Atlas connection string
+### Local Development
+- No local MongoDB installation required
+- All data is stored in the cloud Atlas cluster
+- Multiple developers can share the same database instance
 
 ## Project Structure
 
@@ -116,7 +116,7 @@ CodeTrack/
 
 - **Node.js** - Runtime environment
 - **Express.js** - Web framework
-- **MongoDB** - Database (Local instance)
+- **MongoDB Atlas** - Cloud database
 - **Mongoose** - ODM for MongoDB
 - **CORS** - Cross-origin resource sharing
 - **dotenv** - Environment variable management

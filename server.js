@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI || 'mongodb+srv://CodeTrack:qlvonOtyy8pnqK6n@codetrack.jiuaqby.mongodb.net/';
 
 // Add connection event listeners
 mongoose.connection.on('connected', () => {
@@ -26,14 +26,14 @@ mongoose.connection.on('disconnected', () => {
 
 mongoose.connect(uri)
     .then(() => {
-        console.log('Connected to MongoDB');
+        console.log('Connected to MongoDB Atlas');
         console.log('Database:', mongoose.connection.db.databaseName);
-        console.log('Connection URI:', uri);
+        console.log('Connection URI:', uri.replace(/:[^:@]*@/, ':****@')); // Hide password in logs
         console.log('Models loaded: User, List');
     })
     .catch(err => {
-        console.error('MongoDB connection error:', err);
-        console.error('Make sure MongoDB is running on localhost:27017');
+        console.error('MongoDB Atlas connection error:', err);
+        console.error('Check your internet connection and MongoDB Atlas status');
         process.exit(1);
     });
 
